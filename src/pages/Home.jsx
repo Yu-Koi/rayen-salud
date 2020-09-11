@@ -3,42 +3,30 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
   Typography,
-  FormControl,
+  FormHelperText,
   Box,
   Select,
   Divider,
-  
 } from "@material-ui/core";
 import TopBar from "../Components/TopBar";
 
-
 const useStyles = makeStyles((theme) => ({
   transtationState: {
-    marginLeft: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    margin: theme.spacing(2, 2, 2),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
-  tittle: {
-    flexGrow: 1,
-    margin: theme.spacing(2, 16, 2),
-  },
-  titless: {
-    fontFamily: "Montserrat",
-    fontWeight: "Bold",
-    fontSize: "15px"
-  },
-  title2: {
-    fontFamily: "Montserrat",
-    fontSize: "13px"
+
+ 
+
+  spacing: {
+    display: "flex",
+    justifyContent: "space-between",
   },
 }));
 
-
-
-
 const Home = () => {
-
   const classes = useStyles();
   const [dataTutorials, setDataTutorials] = useState([]);
 
@@ -61,12 +49,6 @@ const Home = () => {
 
   const [idCategories, setIdCategories] = useState(-1);
 
-  const [stateSelected, setStateSelected] = useState("");
-
-  const selected = () => {
-    setStateSelected(setDataTutorials);
-  };
-
   const handlerLoadCategories = function (e) {
     const option = e.target.value;
     console.log(option);
@@ -76,7 +58,7 @@ const Home = () => {
   return (
     <Fragment>
       <TopBar />
-      <Grid  >
+      <Grid>
         <Grid item>
           <Select
             name="categorias"
@@ -90,58 +72,98 @@ const Home = () => {
               </option>
             ))}
           </Select>
+          </Grid>
+          <Grid item>
 
-          <h3>Titulos</h3>
           {
-            <Grid name="categoryTittle" id="selCategoryTittle" className={classes.transtationState}>
-              {idCategories == 0 &&
-                dataTutorials.map((item) => (
-                  <Box key={item.id} value={item.id}  className={classes.titless}>
-                    {item.nombre} {item.profesor}
-                    <Divider />
-                  </Box>
-                 
-                ))}
-                 
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              name="categoryTittle"
+              id="selCategoryTittle"
+              className={classes.transtationState}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                className={classes.categoryTutorials}
+              >
+                {idCategories == 0 &&
+                  dataTutorials.map((item) => (
+                    <Box
+                      p={0}
+                      mt={0.2}
+                      bgcolor="#fff"
+                      key={item.id}
+                      value={item.id}
+                    >
+                      <div className={classes.spacing}>
+                        <Typography className={classes.titless}>
+                          {item.nombre}
+                        </Typography>
+                        <div>
+                          <FormHelperText>{item.fecha}</FormHelperText>
+                        </div>
+                      </div>
+                      <div>
+                        <FormHelperText>{item.profesor}</FormHelperText>
+                      </div>
+
+                      <Divider />
+                    </Box>
+                  ))}
+              </Grid>
             </Grid>
           }
 
+          {
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              name="categoryTittle"
+              id="selCategoryTittle"
+              className={classes.transtationState}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                className={classes.categoryTutorials}
+              >
+                {idCategories == 1 &&
+                  dataTutorials.map((item) => (
+                    <Box
+                      p={0}
+                      mt={0.2}
+                      bgcolor="#fff"
+                      key={item.id}
+                      value={item.id}
+                    >
+                      <div className={classes.spacing}>
+                        <Typography className={classes.titless}>
+                          {item.fecha}
+                        </Typography>
+                        <div>
+                          <FormHelperText>{item.profesor}</FormHelperText>
+                        </div>
+                      </div>
+                      <div>
+                        <FormHelperText>{item.nombre}</FormHelperText>
+                      </div>
 
-{
-            <ul name="categoryDate" id="selCategoryDate">
-              {idCategories == 1 &&
-                dataTutorials.map((item) => (
-                  <li key={item.id} value={item.id}>
-                    {item.fecha}
-                  </li>
-                ))}
-            </ul>
+                      <Divider />
+                    </Box>
+                  ))}
+              </Grid>
+            </Grid>
           }
-        </Grid>
-
-        <Grid>
-          <Select name="tutoriales">
-            {dataTutorials.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.nombre}
-              </option>
-            ))}
-          </Select>
-        </Grid>
-
-        <Grid item>
-          <h3>Home</h3>
-          <ul>
-            {dataTutorials.map((item, i) => (
-              <li key={i}>
-                {item.id}
-                {item.nombre}
-                {item.profesor}
-                {item.materia}
-                {item.fecha}
-              </li>
-            ))}
-          </ul>
         </Grid>
       </Grid>
     </Fragment>

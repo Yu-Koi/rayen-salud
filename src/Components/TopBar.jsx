@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tittle: {
     flexGrow: 1,
-    margin: theme.spacing(2, 16, 2),
+    margin: theme.spacing(2, 8, 2),
   },
 }));
 
