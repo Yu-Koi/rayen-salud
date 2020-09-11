@@ -1,15 +1,45 @@
 import React, { useState, Fragment } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
   Typography,
   FormControl,
+  Box,
   Select,
-  ListItemIcon,
+  Divider,
+  
 } from "@material-ui/core";
-
 import TopBar from "../Components/TopBar";
 
+
+const useStyles = makeStyles((theme) => ({
+  transtationState: {
+    marginLeft: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  tittle: {
+    flexGrow: 1,
+    margin: theme.spacing(2, 16, 2),
+  },
+  titless: {
+    fontFamily: "Montserrat",
+    fontWeight: "Bold",
+    fontSize: "15px"
+  },
+  title2: {
+    fontFamily: "Montserrat",
+    fontSize: "13px"
+  },
+}));
+
+
+
+
 const Home = () => {
+
+  const classes = useStyles();
   const [dataTutorials, setDataTutorials] = useState([]);
 
   React.useEffect(() => {
@@ -46,7 +76,7 @@ const Home = () => {
   return (
     <Fragment>
       <TopBar />
-      <Grid container justify="center">
+      <Grid  >
         <Grid item>
           <Select
             name="categorias"
@@ -61,13 +91,28 @@ const Home = () => {
             ))}
           </Select>
 
-          <h3>Articulos</h3>
+          <h3>Titulos</h3>
           {
-            <ul name="tutoriales" id="selTutoriales">
+            <Grid name="categoryTittle" id="selCategoryTittle" className={classes.transtationState}>
               {idCategories == 0 &&
-                dataTutorials.map((item, id) => (
+                dataTutorials.map((item) => (
+                  <Box key={item.id} value={item.id}  className={classes.titless}>
+                    {item.nombre} {item.profesor}
+                    <Divider />
+                  </Box>
+                 
+                ))}
+                 
+            </Grid>
+          }
+
+
+{
+            <ul name="categoryDate" id="selCategoryDate">
+              {idCategories == 1 &&
+                dataTutorials.map((item) => (
                   <li key={item.id} value={item.id}>
-                    {item.nombre}
+                    {item.fecha}
                   </li>
                 ))}
             </ul>
