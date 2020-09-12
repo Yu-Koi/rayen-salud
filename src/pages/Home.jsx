@@ -1,4 +1,6 @@
 import React, { useState, Fragment } from "react";
+import { green, purple } from '@material-ui/core/colors';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -7,23 +9,33 @@ import {
   Box,
   Select,
   Divider,
+  Button,
 } from "@material-ui/core";
 import TopBar from "../Components/TopBar";
+import ButtonAdd from "../Components/ButtonAdd";
 
 const useStyles = makeStyles((theme) => ({
-  transtationState: {
+  root: {
     margin: theme.spacing(2, 2, 2),
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
   },
+  select: {
+    display: "flex",
+    flexDirection: "row",
 
- 
+  },
 
   spacing: {
     display: "flex",
     justifyContent: "space-between",
   },
+  buttonDelete: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  
 }));
 
 const Home = () => {
@@ -59,8 +71,9 @@ const Home = () => {
     <Fragment>
       <TopBar />
       <Grid>
-        <Grid item>
+        <Grid item className={classes.select}>
           <Select
+          
             name="categorias"
             id="selCategorias"
             onClick={handlerLoadCategories}
@@ -83,7 +96,7 @@ const Home = () => {
               md={12}
               name="categoryTittle"
               id="selCategoryTittle"
-              className={classes.transtationState}
+              className={classes.root}
             >
               <Grid
                 item
@@ -128,7 +141,7 @@ const Home = () => {
               md={12}
               name="categoryTittle"
               id="selCategoryTittle"
-              className={classes.transtationState}
+              className={classes.root}
             >
               <Grid
                 item
@@ -165,6 +178,18 @@ const Home = () => {
             </Grid>
           }
         </Grid>
+        <Grid item className={classes.buttonDelete}>
+        <Button variant="outlined"  style={{ color: "#6200EE" , borderColor:"#6200EE"}} >
+       Eliminar Todos
+      </Button>
+        </Grid>
+       
+
+      <ButtonAdd />
+
+      
+
+      
       </Grid>
     </Fragment>
   );

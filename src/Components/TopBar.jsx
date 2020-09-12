@@ -2,6 +2,13 @@ import React, { Fragment } from "react";
 import { Grid, Box, Typography, Input } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import CreateIcon from '@material-ui/icons/Create';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -26,7 +33,7 @@ const TopBar = () => {
         <Typography
           className={classes.tittle}
           variant="h5"
-          style={{ color: "#FFFAFA" }}
+          style={{ color: "#FFFFFFDE" }}
         >
           Tutoriales
         </Typography>
