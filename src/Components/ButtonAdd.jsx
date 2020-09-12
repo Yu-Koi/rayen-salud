@@ -9,7 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 
 const useStyles = makeStyles((theme) => ({
    
-    absolute: {
+    position: {
       position: 'absolute',
       bottom: theme.spacing(2),
       right: theme.spacing(3),
@@ -23,7 +23,7 @@ const ButtonAdd = () => {
     return (
         <Fragment>
              <Tooltip title="Add" aria-label="add" >
-        <Fab color="primary" className={classes.absolute}>
+        <Fab color="primary" className={classes.position}>
           <AddIcon />
         </Fab>
       </Tooltip>

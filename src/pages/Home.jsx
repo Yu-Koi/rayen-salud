@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
-import { green, purple } from '@material-ui/core/colors';
+import { withRouter } from "react-router-dom";
+
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -11,8 +12,9 @@ import {
   Divider,
   Button,
 } from "@material-ui/core";
-import TopBar from "../Components/TopBar";
+import TopBarHome from "../Components/TopBarHome";
 import ButtonAdd from "../Components/ButtonAdd";
+import AddTutorial from "./AddTutorial";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-const Home = () => {
+const Home = (props) => {
   const classes = useStyles();
   const [dataTutorials, setDataTutorials] = useState([]);
 
@@ -67,9 +69,14 @@ const Home = () => {
     setIdCategories(option);
   };
 
+  const addTutorial = () => {
+    console.log("Click a Añadiendo Tutorial")
+    props.history.push("/post");
+  }
+
   return (
     <Fragment>
-      <TopBar />
+      <TopBarHome />
       <Grid>
         <Grid item className={classes.select}>
           <Select
@@ -185,7 +192,7 @@ const Home = () => {
         </Grid>
        
 
-      <ButtonAdd />
+      <ButtonAdd onClick={addTutorial()}/>
 
       
 
